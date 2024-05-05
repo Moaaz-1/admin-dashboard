@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="main.css"> -->
+  </head>
+  <body>
+    <h1>Sign up</h1>
+    <form action="" method="post">
+      <div class="info">
+        <div>
+          <label for="fname">First name</label>
+          <input placeholder="Write any thing" id="fname" type="text" />
+        </div>
+        <div>
+          <label for="sname">Second name</label>
+          <input placeholder="Write any thing" id="sname" type="text" />
+        </div>
+        <div>
+          <label for="tname">Last name</label>
+          <input placeholder="Write any thing" id="tname" type="text" />
+        </div>
+        <div>
+          <label for="email">Your email</label>
+          <input placeholder="Write any thing" id="email" type="email" />
+        </div>
+        <div>
+          <label for="num">Your number</label>
+          <input placeholder="Write any thing" id="num" type="number" />
+        </div>
+        <div>
+          <label for="date">Birth date</label>
+          <input placeholder="Write any thing" id="date" type="date" />
+        </div>
+        <div>
+          <label for="age">Your age</label>
+          <input placeholder="Write any thing" id="age" type="number" />
+        </div>
+        <div>
+          <label for="country">Country</label>
+          <input placeholder="Write any thing" id="country" type="text" />
+        </div>
+      </div>
+      <style>
+        h1 {
+          color: white;
+          font-family: sans-serif;
+          text-align: center;
+          margin-top: 50px;
+          font-size: 40px;
+        }
+        form {
+          margin-top: 10%;
+        }
+        body {
+          background-color: #0c111b;
+        }
+        .info {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+          gap: 20px;
+        }
+        @media (max-width: 525px) {
+          .info {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+          }
+        }
+        input {
+          width: 97%;
+          margin-top: 10px;
+          outline: none;
+          border: none;
+          background-color: rgb(35 46 67);
+          height: 35px;
+          color: white;
+          padding-left: 10px;
+        }
+        .info label {
+          color: rgb(255, 255, 255);
+          font-family: sans-serif;
+        }
+        .signup-trans {
+          outline: none;
+          border: none;
+          background-color: #0000ff;
+          color: white;
+          padding: 12px 25px;
+          margin-right: 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          margin-top: 50px;
+          margin-left: 50%;
+          transform: translateX(-50%);
+        }
+      </style>
+    </form>
+    <button class="signup-trans">Sign up</button>
+    <script>
+      window.onload=()=>{
+        if(sessionStorage.getItem("user-info")!=null){
+          window.location.assign("dash.html");
+        }
+      }
+      document.querySelector(".signup-trans").addEventListener("click",() => {
+        sessionStorage.clear();
+        let info={
+          fname:document.querySelector("#fname").value,
+          sname:document.querySelector("#sname").value,
+          lname:document.querySelector("#tname").value,
+          email:document.querySelector("#email").value,
+          num:document.querySelector("#num").value,
+          date:document.querySelector("#date").value,
+          age:document.querySelector("#age").value,
+          country:document.querySelector("#country").value
+        }
+        sessionStorage.setItem("user-info",JSON.stringify(info));
+        window.location.assign("dash.html");
+      });
+    </script>
+  </body>
+</html>
